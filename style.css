@@ -11,9 +11,61 @@ body{
     margin: 10px;
 }
 
+.Header h1{
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 50px;
+    font-family: 'Poor Story', system-ui;
+}
+.Search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Search input{
+    width: 500px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 20px;
+    font-family: 'Poor Story', system-ui;
+}
+.Search Select{
+    width: 120px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 20px;
+    font-family: 'Poor Story', system-ui;
+    margin-left: 10px;
+}
+.Search Button, .Pasge Button{
+    width: 70px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 20px;
+    font-family: 'Poor Story', system-ui;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+
 .Pictures{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 10px;
     margin: 10px;
+}
+
+.Page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
