@@ -3,3 +3,17 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.BigGrid{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+    margin: 10px;
+}
+
+.Pictures{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+    margin: 10px;
+}
