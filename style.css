@@ -62,6 +62,11 @@ body{
     grid-gap: 10px;
     margin: 10px;
 }
+
+.pictures img {
+    /*stylea bilderna osv*/
+}
+
 .Page{
     display: flex;
     justify-content: center;
