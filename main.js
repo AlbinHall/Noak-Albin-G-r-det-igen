@@ -3,6 +3,9 @@ let selector = document.querySelector("#category")
 let pictures = document.querySelector(".Pictures")
 let pageNow = 1
 let numbersOfPictures = 10
+let form = document.querySelector("#search-form")
+let oldSearchInput = ""
+let userInput = document.querySelector("#search");
 
 let nextPage = document.querySelector("#nextButton")
 nextPage.addEventListener("click", LoadNextPage)
@@ -23,7 +26,12 @@ function FilldropDown() {
     }
 }
 
-document.getElementById("searchButton").addEventListener("click", fetchingApi);
+form.addEventListener("submit", event => {
+    event.preventDefault()
+    oldSearchInput = userInput.value
+    pageNow = 1
+    fetchingApi()
+});
 
 /**
  * hämtar api:n, selected color är från dropdownen, iserInput är texten man skriver
@@ -31,25 +39,25 @@ document.getElementById("searchButton").addEventListener("click", fetchingApi);
  * numbersOfPictures e hur många bilder vi vill visa per sida
 */
 async function fetchingApi() {
-    let userInput = document.getElementById("search").value;
     let selectedColor = selector.value;
     
     var API_KEY = '42114230-518f9984a7b51cfb128a38f28';
-    var URL = `https://pixabay.com/api/?key=${API_KEY}&q=${encodeURIComponent(`${userInput}`)}&colors=${selectedColor}&page=${pageNow}&per_page=${numbersOfPictures}`;
-    
-    try {
-        const response = await fetch(URL);
-        const data = await response.json();
-        
-        if (parseInt(data.totalHits) > 0) {
-            displayPictures(data.hits);
-        } else {
-            console.log('No hits');
-            clearPictures(); 
+    var URL = `https://pixabay.com/api/?key=${API_KEY}&q=${encodeURIComponent(`${oldSearchInput}`)}&colors=${selectedColor}&page=${pageNow}&per_page=${numbersOfPictures}`;
+        try {
+            const response = await fetch(URL);
+            const data = await response.json();
+            
+            totalHits = parseInt(data.totalHits);
+            
+            if (parseInt(data.totalHits) > 0) {
+                displayPictures(data.hits);
+            } else {
+                console.log('No hits');
+                clearPictures(); 
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);
         }
-    } catch (error) {
-        console.error('Error fetching data:', error);
-    }
 }
 
 /**
@@ -65,9 +73,15 @@ function displayPictures(pictures) {
     if (pageNow <= 1) {
         prevPage.disabled = true
     }
+
+    if (pageNow * numbersOfPictures >= totalHits) {
+        nextPage.disabled = true; 
+    } else {
+        nextPage.disabled = false; 
+    }
     
     pictures.forEach((hit) => {
-        
+        let imageDiv = document.createElement("div")
         const imgElement = document.createElement('img');
         imgElement.src = hit.previewURL;
         picturesContainer.appendChild(imgElement);
