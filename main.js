@@ -1,4 +1,4 @@
-let colors = ['red', 'blue', 'green', 'yellow', 'orange', 'purple', 'pink', 'brown', 'black', 'white'];
+let colors = ['Any color','red', 'blue', 'green', 'yellow', 'orange', 'purple', 'pink', 'brown', 'black', 'white'];
 let selector = document.querySelector("#category")
 let pictures = document.querySelector(".Pictures")
 let pageNow = 1
