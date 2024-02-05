@@ -6,6 +6,9 @@ let numbersOfPictures = 10
 let form = document.querySelector("#search-form")
 let oldSearchInput = ""
 let userInput = document.querySelector("#search");
+let oldColor = ""
+let totalHits = 0;
+
 
 let nextPage = document.querySelector("#nextButton")
 nextPage.addEventListener("click", LoadNextPage)
@@ -29,6 +32,7 @@ function FilldropDown() {
 form.addEventListener("submit", event => {
     event.preventDefault()
     oldSearchInput = userInput.value
+    oldColor = selector.value
     pageNow = 1
     fetchingApi()
 });
@@ -38,17 +42,20 @@ form.addEventListener("submit", event => {
  * pageNow e för att vi ska kunna hantera nästa sida funktionen osv
  * numbersOfPictures e hur många bilder vi vill visa per sida
 */
+
+/**
+ * fixa bildens taggar samt fotografens namn
+ */
 async function fetchingApi() {
-    let selectedColor = selector.value;
     
+
     var API_KEY = '42114230-518f9984a7b51cfb128a38f28';
-    var URL = `https://pixabay.com/api/?key=${API_KEY}&q=${encodeURIComponent(`${oldSearchInput}`)}&colors=${selectedColor}&page=${pageNow}&per_page=${numbersOfPictures}`;
+    var URL = `https://pixabay.com/api/?key=${API_KEY}&q=${encodeURIComponent(`${oldSearchInput}`)}&colors=${oldColor}&page=${pageNow}&per_page=${numbersOfPictures}`;
         try {
             const response = await fetch(URL);
             const data = await response.json();
             
-            totalHits = parseInt(data.totalHits);
-            
+            let tag = data.hits.tag
             if (parseInt(data.totalHits) > 0) {
                 displayPictures(data.hits);
             } else {
@@ -63,6 +70,8 @@ async function fetchingApi() {
 /**
  * skapar img och lägger den i pictures diven som ligger i HTML
  * innerText för att rensa de gamla bilderna
+ * skapar en div för varje bild för att texten ska ligga rätt för varje bild
+ * hämtar tags och user från data.hit
 */
 function displayPictures(pictures) {
     const picturesContainer = document.querySelector(".Pictures");
@@ -81,10 +90,20 @@ function displayPictures(pictures) {
     }
     
     pictures.forEach((hit) => {
-        let imageDiv = document.createElement("div")
-        const imgElement = document.createElement('img');
+        const imageDiv = document.createElement("div");
+        const imgElement = document.createElement("img");
+        const tagsParagraph = document.createElement("p");
+        const userParagraph = document.createElement("p")
+
         imgElement.src = hit.previewURL;
-        picturesContainer.appendChild(imgElement);
+        imageDiv.appendChild(imgElement);
+
+        tagsParagraph.innerText = hit.tags;
+        userParagraph.innerText = hit.user
+        imageDiv.appendChild(tagsParagraph);
+        imageDiv.appendChild(userParagraph)
+
+        picturesContainer.appendChild(imageDiv);
     });
 }
 /**
