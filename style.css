@@ -51,6 +51,12 @@ body{
     background-color: rgba(206, 205, 205, 0.911);
 }
 
+p{
+    font-size: 20px;
+    font-family: 'Poor Story', system-ui;
+    text-align: center;
+}
+
 
 .Pictures{
     display: grid;
@@ -58,7 +64,7 @@ body{
     grid-gap: 10px;
     margin: 10px;
     max-width: 70%;
-    margin-left: 300px;
+    margin-left: 7%;
 }
 
 .Pictures img {
@@ -73,5 +79,4 @@ body{
 }
 
 .imageDiv {
-    
 }
