@@ -55,6 +55,7 @@ p{
     font-size: 20px;
     font-family: 'Poor Story', system-ui;
     text-align: center;
+    
 }
 
 
@@ -67,13 +68,16 @@ img {
     height: 190px;
     margin: 10px;
     max-width: 70%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
-.PicDiv img{
-    display: grid;
-    justify-content: center;
-    align-items: center;
+.picDiv img:hover{
+    transform: scale(1.1);
+    transition: 0.5s;
 }
-
+.picDiv img{
+    margin-left: 15%;
+}
 
 .Page{
     display: flex;
@@ -82,4 +86,34 @@ img {
     bottom: 10px;
     width: 100%;
     align-items: center;
+}
+
+@media  screen and (max-width: 1200px){
+    .Pictures{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    body{
+        background-size: 100%;
+    }
+}
+@media  screen and (max-width: 940px){
+    .Pictures{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+@media  screen and (max-width: 824px){
+    .Pictures{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    #searchButton{
+        margin-top: 10px;
+    }
+}
+@media  screen and (max-width: 550px){
+    .Search input{
+        width: 30%;
+    }
 }

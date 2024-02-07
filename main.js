@@ -90,7 +90,7 @@ function displayPictures(pictures) {
 
     pictures.forEach((hit) => {
         const imageDiv = document.createElement("div");
-        imageDiv.classList.add("PicDiv");
+        imageDiv.classList.add("picDiv");
         const imgElement = document.createElement("img");
 
         const tagsParagraph = document.createElement("p");
