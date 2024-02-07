@@ -6,7 +6,7 @@ body{
 }
 .BigGrid{
     display: grid;
-    grid-template-rows: 0.3fr 0.4fr 1.5fr 0.3fr;
+    grid-template-rows: 0.3fr 0.2fr 1.5fr;
     grid-gap: 10px;
     margin: 10px;
 }
@@ -55,30 +55,31 @@ p{
     font-size: 20px;
     font-family: 'Poor Story', system-ui;
     text-align: center;
-    
 }
 
 
 .Pictures{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: 10px;
-    margin: 10px;
-    max-width: 70%;
-    margin-left: 7%;
-    margin-left: 17%;
 }
-
-.Pictures img {
+img {
     width: 225px;
     height: 190px;
+    margin: 10px;
+    max-width: 70%;
 }
-
-.Page{
-    display: flex;
+.PicDiv img{
+    display: grid;
     justify-content: center;
     align-items: center;
 }
 
-.imageDiv {
+
+.Page{
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    align-items: center;
 }
