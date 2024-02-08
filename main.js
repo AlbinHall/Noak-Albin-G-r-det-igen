@@ -112,8 +112,8 @@ function displayPictures(pictures) {
  * Kallas på om det inte blir några resultat "hits" från api:n
 */
 function clearPictures() {
-    const picturesContainer = document.querySelector(".Pictures");
-    picturesContainer.innerText = '';
+    pictures
+    pictures.innerText = '';
     nextPage.disabled = true
 }
 
