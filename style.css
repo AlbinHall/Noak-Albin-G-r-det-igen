@@ -22,13 +22,14 @@ body{
     justify-content: center;
     align-items: center;
 }
+
 .Search input{
     width: 500px;
     height: 50px;
     border-radius: 10px;
     border: none;
     outline: none;
-    padding: 10px;
+    padding-left: 10px;
     font-size: 20px;
     font-family: 'Poor Story', system-ui;
     background-color: rgba(206, 205, 205, 0.719);
@@ -109,17 +110,44 @@ img {
         grid-template-columns: 1fr 1fr 1fr;
     }
 }
-@media  screen and (max-width: 824px){
+@media  screen and (max-width: 850px){
     .Pictures{
-        display: grid;
+        
         grid-template-columns: 1fr 1fr;
     }
-    #searchButton{
-        margin-top: 10px;
+    .Search input{
+        width: 350px;
     }
 }
-@media  screen and (max-width: 550px){
+@media  screen and (max-width: 670px){
     .Search input{
         width: 30%;
+    }
+}
+@media  screen and (max-width: 440px){
+    form {
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr;
+        
+    }
+    .Search input{
+        width: 15em;
+        margin-bottom:10px;
+    }
+
+    .Pictures {
+        grid-template-columns: 1fr;
+    }
+
+    .Search Select, #searchButton{
+        margin-left: 30%;
+    }
+
+    .Page {
+        max-height: 10em;
+    }
+    
+    .BigGrid {
+        grid-template-rows: 0.1fr 0.1fr 0.5fr;
     }
 }
